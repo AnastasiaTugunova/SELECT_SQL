@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS performer_album (
 
 CREATE TABLE IF NOT EXISTS track (
 	id SERIAL PRIMARY KEY,
-	track_name VARCHAR(20) NOT NULL,
+	track_name TEXT NOT NULL,
 	duration_track INTEGER NOT NULL,
 	album_track INTEGER NOT NULL REFERENCES album (id)
 );
