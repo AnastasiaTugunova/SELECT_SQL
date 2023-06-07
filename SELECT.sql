@@ -20,9 +20,9 @@ SELECT nickname FROM performer_list pl
 -- Название треков, которые содержат слово «мой» или «my».
 SELECT track_name FROM track
 	WHERE track_name ILIKE '%мой%' OR track_name ILIKE '%my%' 
-	   OR track_name ILIKE 'мой%' OR track_name ILIKE 'my%'
-	   OR track_name ILIKE '%мой' OR track_name ILIKE '%my'
-	   OR track_name ILIKE 'мой' OR track_name ILIKE 'my';
+	   OR track_name ILIKE '% мой%' OR track_name ILIKE '% my%'
+	   OR track_name ILIKE '%мой %' OR track_name ILIKE '%my %'
+	   OR track_name ILIKE '% мой %' OR track_name ILIKE '% my %';
 
 -- Количество исполнителей в каждом жанре.
 SELECT g.genre_name, COUNT(pl.nickname) FROM genre AS g
@@ -32,10 +32,9 @@ GROUP BY g.genre_name
 ORDER BY COUNT(pl.nickname);
 
 -- Количество треков, вошедших в альбомы 2019–2020 годов.
-SELECT DISTINCT a.album_realise, COUNT(t.track_name)FROM album a 
+SELECT DISTINCT COUNT(t.track_name)FROM album a 
  	JOIN track t ON t.album_track = a.id 
-	WHERE a.album_realise BETWEEN 2019 AND 2020
-GROUP BY a.album_realise;
+	WHERE a.album_realise BETWEEN 2019 AND 2020;
 
 -- Средняя продолжительность треков по каждому альбому.
 SELECT a.album_name , AVG(t.duration_track) FROM album a
