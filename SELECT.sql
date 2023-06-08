@@ -19,9 +19,9 @@ SELECT nickname FROM performer_list pl
 
 -- Название треков, которые содержат слово «мой» или «my».
 SELECT track_name FROM track
-	WHERE track_name ILIKE '%мой%' OR track_name ILIKE '%my%' 
-	   OR track_name ILIKE '% мой%' OR track_name ILIKE '% my%'
-	   OR track_name ILIKE '%мой %' OR track_name ILIKE '%my %'
+	WHERE track_name ILIKE 'мой' OR track_name ILIKE 'my' 
+	   OR track_name ILIKE '% мой' OR track_name ILIKE '% my'
+	   OR track_name ILIKE 'мой %' OR track_name ILIKE 'my %'
 	   OR track_name ILIKE '% мой %' OR track_name ILIKE '% my %';
 
 -- Количество исполнителей в каждом жанре.
